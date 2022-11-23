@@ -2,7 +2,7 @@ import Header from "./Header";
 import Menu from "../src/components/Menu";
 import TimeLine from "./TimeLine";
 
-
+import config from '../config.json';
 
 import { useEffect, useState } from "react";
 import videoService from "../src/components/services/videoService";
@@ -22,12 +22,16 @@ function HomePage(){
             .getAllVideos()
             .then((info) => {
                 // console.log(info.data);
-                const newPlaylists = { ...playlists };
+                const newPlaylists = {};
                 info.data.forEach((video) => {
+                    
                     if (!newPlaylists[video.playlist]) {
                         newPlaylists[video.playlist] = [];
                     }
-                    newPlaylists[video.playlist].push(video);
+                    newPlaylists[video.playlist] = [
+                        video,
+                        ...newPlaylists[video.playlist],
+                    ]
                 })
                 setPlaylists(newPlaylists);
             })
