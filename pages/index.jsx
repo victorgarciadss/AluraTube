@@ -2,7 +2,7 @@ import Header from "./Header";
 import Menu from "../src/components/Menu";
 import TimeLine from "./TimeLine";
 
-// import config from '../config.json';
+
 
 import { useEffect, useState } from "react";
 import videoService from "../src/components/services/videoService";
